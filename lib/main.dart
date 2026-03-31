@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart'; // ← Make sure this line is present
+import 'firebase_options.dart';
 import 'core/theme/app_theme.dart';
 import 'core/constants/app_routes.dart';
 import 'data/datasources/local/hive_datasources.dart';
@@ -257,9 +257,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
               // Tagline
               Text(
-                'Track your finances with ease',
+                'Track your finances',
                 style: theme.textTheme.bodyLarge?.copyWith(
-                  color: Colors.white.withOpacity(0.9),
+                  color: Colors.red.withOpacity(0.9),
                 ),
               ),
               const SizedBox(height: 48),
