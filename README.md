@@ -85,9 +85,12 @@ Please add your own Firebase configuration file to run the project.
 
 ## 📸 Screenshots
 ![1000157057](https://github.com/user-attachments/assets/63cc03bd-a842-47d4-908c-f1e208a7a8d1)
-![1000157057](https://github.com/user-attachments/assets/0d2e55cc-5ad1-48e7-ab40-ebb36a185d97)
-![1000157057](https://github.com/user-attachments/assets/5cddb668-1d2c-4480-ba50-a1122a443d45)
-![1000157057](https://github.com/user-attachments/assets/2e2b0be3-f7b5-4086-b7bb-3d6b3355b489)
+![1000157058](https://github.com/user-attachments/assets/92cb7cec-e470-4d81-baea-33fd60d97ab5)
+![1000157059](https://github.com/user-attachments/assets/741482c4-e0ed-4450-bff9-936c8d7f365a)
+![1000157060](https://github.com/user-attachments/assets/93b0152d-aa98-4785-991f-ff86bfa7f82f)
+
+
+
 
 
 
