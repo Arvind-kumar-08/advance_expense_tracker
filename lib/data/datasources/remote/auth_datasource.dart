@@ -42,6 +42,7 @@ class AuthDataSource {
         userCredential.user!.uid,
         email,
         name,
+
       );
 
       return user;
@@ -69,7 +70,7 @@ class AuthDataSource {
       final user = UserModel.fromFirebase(
         userCredential.user!.uid,
         userCredential.user!.email!,
-        userCredential.user!.displayName ?? 'User',
+        userCredential.user!.displayName ?? 'User'
       );
 
       return user;

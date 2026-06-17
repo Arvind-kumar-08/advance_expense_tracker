@@ -70,18 +70,10 @@ class SettingsScreen extends StatelessWidget {
           SettingsTile(
             icon: Icons.person,
             title: 'Profile',
-            subtitle: authProvider.currentUser?.email ?? '',
+            subtitle: authProvider.currentUser?.name ?? 'User',
             onTap: () {
-              // Navigate to profile screen (optional)
+              Navigator.pushNamed(context, AppRoutes.profile);
             },
-          ),
-          const SizedBox(height: 8),
-          SettingsTile(
-            icon: Icons.logout,
-            title: AppStrings.logout,
-            subtitle: 'Sign out of your account',
-            textColor: Colors.red,
-            onTap: () => _handleLogout(context, authProvider),
           ),
           const SizedBox(height: 24),
 
@@ -98,22 +90,19 @@ class SettingsScreen extends StatelessWidget {
           SettingsTile(
             icon: Icons.privacy_tip_outlined,
             title: 'Privacy Policy',
-            onTap: () {
               // Navigate to privacy policy
-            },
+              onTap: () => _showPrivacyPolicyDialog(context),
           ),
           const SizedBox(height: 8),
           SettingsTile(
             icon: Icons.description_outlined,
             title: 'Terms of Service',
-            onTap: () {
-              // Navigate to terms of service
-            },
+            onTap: () => _showTermsOfServiceDialog(context),
           ),
           const SizedBox(height: 32),
 
-          // Danger Zone Section
-          _buildSectionHeader(theme, 'Danger Zone'),
+          // Delete Account Section
+          _buildSectionHeader(theme, 'Account Delete'),
           const SizedBox(height: 12),
           SettingsTile(
             icon: Icons.delete_forever,
@@ -416,6 +405,144 @@ class SettingsScreen extends StatelessWidget {
               '• Offline support\n'
               '• Cloud sync\n'
               '• PDF export',
+        ),
+      ],
+    );
+  }
+  /// Privacy policy dialog
+  void _showPrivacyPolicyDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Privacy Policy'),
+          content: const SingleChildScrollView(
+            child: Text(
+              'Last Updated: June 2026\n\n'
+                  'Expense Tracker respects your privacy and is committed to protecting your personal information.\n\n'
+                  'Information We Collect:\n'
+                  '• Name and email address for account creation and authentication.\n'
+                  '• Transaction data entered by you, including income, expenses, categories, and notes.\n'
+                  '• Basic device information required for app functionality.\n\n'
+                  'How We Use Your Information:\n'
+                  '• To provide expense tracking services.\n'
+                  '• To synchronize data across devices.\n'
+                  '• To improve application performance and user experience.\n'
+                  '• To generate analytics and reports based on your transactions.\n\n'
+                  'Data Storage:\n'
+                  'Your data is securely stored using Firebase services.\n\n'
+                  'Data Sharing:\n'
+                  'We do not sell, trade, or share your personal information with third parties except when required by law.\n\n'
+                  'Data Security:\n'
+                  'We take reasonable measures to protect your information from unauthorized access, disclosure, or misuse.\n\n'
+                  'Your Rights:\n'
+                  'You may request deletion of your account and associated data at any time.\n\n'
+                  'Changes to This Policy:\n'
+                  'This Privacy Policy may be updated periodically.',
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Close'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+  /// terms of Service Dialog
+  void _showTermsOfServiceDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Terms of Service'),
+          content: const SingleChildScrollView(
+            child: Text(
+              'Last Updated: June 2026\n\n'
+                  'By using Expense Tracker, you agree to the following terms.\n\n'
+                  'Use of the Application:\n'
+                  'The application is provided for personal financial tracking and management purposes.\n\n'
+                  'User Responsibilities:\n'
+                  '• Maintain the security of your account credentials.\n'
+                  '• Ensure that information entered into the application is accurate.\n'
+                  '• Use the application in compliance with applicable laws.\n\n'
+                  'Data Accuracy:\n'
+                  'Expense Tracker provides insights based on user-entered data. It does not provide professional financial advice.\n\n'
+                  'Service Availability:\n'
+                  'We strive to keep the application available, but uninterrupted access is not guaranteed.\n\n'
+                  'Limitation of Liability:\n'
+                  'The developer is not responsible for financial decisions made based on information generated by the application.\n\n'
+                  'Termination:\n'
+                  'Access may be suspended or terminated in cases of misuse or violation of these terms.\n\n'
+                  'Changes to Terms:\n'
+                  'These Terms may be updated periodically. Continued use of the application means acceptance of revised terms.',
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Close'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+  /// Show profile dialog
+  void _showProfileDialog(BuildContext context, AuthProvider authProvider) {
+    final user = authProvider.currentUser;
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Profile'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _profileRow('User ID', user?.uid ?? 'Not available'),
+              const SizedBox(height: 12),
+              _profileRow('Email', user?.email ?? 'Not available'),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Close'),
+            ),
+            TextButton(
+              onPressed: () async {
+                Navigator.pop(context);
+                await authProvider.logout();
+
+                if (!context.mounted) return;
+
+                Navigator.pushReplacementNamed(context, AppRoutes.login);
+              },
+              child: const Text(
+                'Logout',
+                style: TextStyle(color: Colors.red),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget _profileRow(String label, String value) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          '$label: ',
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+        Expanded(
+          child: Text(value),
         ),
       ],
     );

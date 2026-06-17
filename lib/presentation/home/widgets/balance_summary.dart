@@ -62,25 +62,24 @@ class BalanceSummary extends StatelessWidget {
           // Income and Expense Row
           Row(
             children: [
-              // Income
               Expanded(
                 child: _buildIncomeExpenseCard(
                   label: 'Income',
                   amount: income,
                   icon: Icons.arrow_downward,
-                  color: Colors.white,
+                  color: const Color(0xFF10B981),
                   isIncome: true,
                 ),
               ),
+
               const SizedBox(width: 16),
 
-              // Expense
               Expanded(
                 child: _buildIncomeExpenseCard(
                   label: 'Expense',
                   amount: expense,
                   icon: Icons.arrow_upward,
-                  color: Colors.white,
+                  color: const Color(0xFFF97316),
                   isIncome: false,
                 ),
               ),
@@ -98,12 +97,13 @@ class BalanceSummary extends StatelessWidget {
     required Color color,
     required bool isIncome,
   }) {
-    final currencyFormatter = NumberFormat.currency(symbol: '₹', decimalDigits: 0);
+    final currencyFormatter =
+    NumberFormat.currency(symbol: '₹', decimalDigits: 0);
 
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.2),
+        color: color, // Solid background
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
@@ -111,12 +111,12 @@ class BalanceSummary extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.2),
+              color: Colors.white.withOpacity(0.20),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Icon(
               icon,
-              color: color,
+              color: Colors.white,
               size: 20,
             ),
           ),
@@ -127,16 +127,17 @@ class BalanceSummary extends StatelessWidget {
               children: [
                 Text(
                   label,
-                  style: TextStyle(
-                    color: color.withOpacity(0.8),
+                  style: const TextStyle(
+                    color: Colors.white,
                     fontSize: 12,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
                 const SizedBox(height: 2),
                 Text(
                   currencyFormatter.format(amount),
-                  style: TextStyle(
-                    color: color,
+                  style: const TextStyle(
+                    color: Colors.white,
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
                   ),

@@ -18,11 +18,13 @@ class AnalyticsScreen extends StatefulWidget {
 
 class _AnalyticsScreenState extends State<AnalyticsScreen> {
   int _selectedPeriod = 0; // 0: This Month, 1: Last Month, 2: Last 6 Months
-
   @override
   void initState() {
     super.initState();
-    _loadAnalytics();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _loadAnalytics();
+    });
   }
 
   Future<void> _loadAnalytics() async {

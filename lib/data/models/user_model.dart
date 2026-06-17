@@ -20,12 +20,14 @@ class UserModel extends HiveObject {
   @HiveField(4)
   final DateTime? lastSyncedAt;
 
+
   UserModel({
     required this.uid,
     required this.email,
     required this.name,
     required this.createdAt,
     this.lastSyncedAt,
+
   });
 
   /// Create UserModel from Firebase Auth user
@@ -33,6 +35,7 @@ class UserModel extends HiveObject {
       String uid,
       String email,
       String name,
+
       ) {
     return UserModel(
       uid: uid,
@@ -40,6 +43,7 @@ class UserModel extends HiveObject {
       name: name,
       createdAt: DateTime.now(),
       lastSyncedAt: DateTime.now(),
+
     );
   }
 
@@ -49,6 +53,7 @@ class UserModel extends HiveObject {
       'uid': uid,
       'email': email,
       'name': name,
+
       'createdAt': createdAt.toIso8601String(),
       'lastSyncedAt': lastSyncedAt?.toIso8601String(),
     };
@@ -74,6 +79,7 @@ class UserModel extends HiveObject {
     String? uid,
     String? email,
     String? name,
+
     DateTime? createdAt,
     DateTime? lastSyncedAt,
   }) {

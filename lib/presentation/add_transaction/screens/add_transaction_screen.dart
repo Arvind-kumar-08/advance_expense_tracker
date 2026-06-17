@@ -33,11 +33,31 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
   String? _selectedCategory;
   DateTime _selectedDate = DateTime.now();
   bool _isLoading = false;
+  bool _receiptDataLoaded = false;
 
   @override
   void initState() {
     super.initState();
     _loadTransactionData();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    if (!_receiptDataLoaded && widget.transactionId == null) {
+      final args = ModalRoute.of(context)?.settings.arguments;
+
+      if (args is Map) {
+        _amountController.text = args['amount']?.toString() ?? '';
+        _noteController.text = args['title']?.toString() ?? '';
+        _selectedCategory = args['category']?.toString();
+        _selectedDate = args['date'] is DateTime ? args['date'] : DateTime.now();
+        _selectedType = TransactionType.expense;
+
+        _receiptDataLoaded = true;
+      }
+    }
   }
 
   @override
@@ -66,6 +86,40 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
     }
   }
 
+  /// Load data coming from receipt scanner
+  void _loadReceiptData() {
+    if (_receiptDataLoaded || widget.transactionId != null) return;
+
+    final args = ModalRoute.of(context)?.settings.arguments;
+
+    if (args is Map) {
+      final amount = args['amount'];
+      final category = args['category'];
+      final title = args['title'];
+      final date = args['date'];
+
+      setState(() {
+        if (amount != null) {
+          _amountController.text = amount.toString();
+        }
+
+        if (category != null && category.toString().trim().isNotEmpty) {
+          _selectedCategory = category.toString();
+        }
+
+        if (title != null && title.toString().trim().isNotEmpty) {
+          _noteController.text = title.toString();
+        }
+
+        if (date is DateTime) {
+          _selectedDate = date;
+        }
+
+        _selectedType = TransactionType.expense;
+        _receiptDataLoaded = true;
+      });
+    }
+  }
   /// Handle save transaction
   Future<void> _handleSave() async {
     if (!_formKey.currentState!.validate()) return;
@@ -156,6 +210,11 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _loadReceiptData();
+    });
+
     final isEditMode = widget.transactionId != null;
 
     return Scaffold(

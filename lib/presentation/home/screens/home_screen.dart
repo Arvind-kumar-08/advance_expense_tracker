@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/constants/app_routes.dart';
 import '../../../core/constants/app_strings.dart';
+import '../../../data/models/transaction_model.dart';
 import '../../../state/providers/auth_provider.dart';
 import '../../../state/providers/transaction_provider.dart';
 import '../widgets/balance_summary.dart';
@@ -31,25 +32,21 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+  void _onItemTapped(int index) async {
+    setState(() => _selectedIndex = index);
 
-    // Navigate based on bottom nav selection
-    switch (index) {
-      case 0:
-      // Home - already here
-        break;
-      case 1:
-        Navigator.pushNamed(context, AppRoutes.analytics);
-        break;
-      case 2:
-      // Add transaction - handled by FAB
-        break;
-      case 3:
-        Navigator.pushNamed(context, AppRoutes.settings);
-        break;
+    if (index == 1) {
+      await Navigator.pushNamed(context, AppRoutes.analytics);
+      if (mounted) {
+        setState(() => _selectedIndex = 0);
+      }
+    }
+
+    if (index == 2) {
+      await Navigator.pushNamed(context, AppRoutes.settings);
+      if (mounted) {
+        setState(() => _selectedIndex = 0);
+      }
     }
   }
 
@@ -124,35 +121,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-
-            // Quick Stats Cards
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: DashboardCard(
-                        title: AppStrings.income,
-                        amount: transactionProvider.totalIncome,
-                        icon: Icons.arrow_upward,
-                        isIncome: true,
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: DashboardCard(
-                        title: AppStrings.expense,
-                        amount: transactionProvider.totalExpense,
-                        icon: Icons.arrow_downward,
-                        isIncome: false,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-
             // Recent Transactions Header
             SliverToBoxAdapter(
               child: Padding(
@@ -227,9 +195,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          Navigator.pushNamed(context, AppRoutes.addTransaction);
-        },
+        onPressed: _showAddOptions,
         icon: const Icon(Icons.add),
         label: const Text('Add'),
       ),
@@ -246,10 +212,6 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.pie_chart),
             label: 'Analytics',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add_circle_outline),
-            label: 'Add',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
@@ -362,6 +324,39 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             );
           },
+        );
+      },
+    );
+  }
+ /// Options for floating button
+  void _showAddOptions() {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return SafeArea(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                leading: const Icon(Icons.edit),
+                title: const Text('Add Manually'),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, AppRoutes.addTransaction);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.document_scanner),
+                title: const Text('Scan Receipt'),
+                onTap: () async {
+                  Navigator.pushNamed(
+                    context,
+                    AppRoutes.receiptScanner,
+                  );
+                },
+              ),
+            ],
+          ),
         );
       },
     );

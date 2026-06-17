@@ -11,6 +11,8 @@ class AppRoutes {
   static const String editTransaction = '/edit-transaction';
   static const String analytics = '/analytics';
   static const String settings = '/settings';
+  static const String profile = '/profile';
+  static const String receiptScanner = '/receipt-scanner';
 
   // Splash
   static const String splash = '/';

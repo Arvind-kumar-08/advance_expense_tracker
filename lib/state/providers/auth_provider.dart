@@ -52,6 +52,7 @@ class AuthProvider with ChangeNotifier {
     required String email,
     required String password,
     required String name,
+    required String phone,
   }) async {
     _setLoading(true);
     _clearError();
@@ -61,6 +62,7 @@ class AuthProvider with ChangeNotifier {
         email: email,
         password: password,
         name: name,
+        phone: phone,
       );
 
       _currentUser = user;
