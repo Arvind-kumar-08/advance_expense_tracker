@@ -11,63 +11,25 @@ A modern Flutter-based Expense Tracker application that helps users track, manag
 👉 https://github.com/Arvind-kumar-08/advance_expense_tracker/releases/download/v1.2.0/ExpenseTracker-v1.2.0.apk
 
 
----
+## New Feature
 
-# 🔥 What's New (v1.2.0)
+### 🆕 New AI & OCR Features
 
-This release introduces several improvements focused on usability, analytics, and performance.
+* Added OCR-based text extraction from receipts and bills
+* Integrated Gemini API for smart expense data interpretation
+* Reduced manual expense entry using AI-assisted extraction
+* Improved expense creation workflow
 
-### ✨ New Features Added
 
-#### 📊 Advanced Analytics Dashboard
+## 📱 Features
 
-* Interactive expense visualization
-* Category-wise spending analysis
-* Monthly expense breakdown
-* Spending trend monitoring
-
-#### 🌙 Dark Mode Support
-
-* Complete dark theme implementation
-* Improved readability in low-light environments
-* Consistent UI across all screens
-
-#### 📄 PDF Report Generation
-
-* Export expenses as PDF reports
-* Share reports instantly
-* Professionally formatted summaries
-
-#### 💾 Offline Data Persistence
-
-* Continue using the app without internet
-* Local data caching
-* Better reliability during network failures
-
-#### ⚡ Performance Enhancements
-
-* Optimized Provider state management
-* Reduced UI rebuilds
-* Faster navigation and loading times
-
-#### 🎨 UI/UX Improvements
-
-* Cleaner and modern design
-* Better user experience
-* Improved navigation flow
-* Enhanced visual consistency
-
----
-
-# 📱 Features
-
-## 🔐 Authentication
+### 🔐 Authentication
 
 * Firebase Authentication
 * Secure Login & Registration
 * User-specific data isolation
 
-## 💵 Expense Management
+### 💵 Expense Management
 
 * Add expenses
 * Edit expenses
@@ -75,47 +37,43 @@ This release introduces several improvements focused on usability, analytics, an
 * Categorize transactions
 * Track spending history
 
-## 📊 Analytics
+### 🧾 Text Data Extraction
+
+* Extract text from receipts and bills using OCR
+* Automatically read expense-related details
+* Helps reduce manual expense entry
+* Improves speed and accuracy while adding expenses
+
+### 🤖 AI-Powered Assistance
+
+* Gemini API integration
+* Smart expense interpretation from extracted text
+* Helps identify useful information from bills and receipts
+
+### 📊 Analytics
 
 * Monthly spending overview
 * Category-wise expense distribution
 * Interactive charts
 * Financial insights dashboard
 
-## 📄 Report Generation
 
-* Generate PDF reports
-* Download reports
-* Share reports with others
 
-## 💾 Offline Support
 
-* Local data storage
-* Seamless offline experience
-* Automatic synchronization support
+## 🛠️ Tech Stack
 
-## 🎨 User Experience
+| Technology                    | Purpose                               |
+| ----------------------------- | ------------------------------------- |
+| Flutter                       | Cross-platform App Development        |
+| Firebase Authentication       | User Authentication                   |
+| Cloud Firestore               | Cloud Database                        |
+| Provider                      | State Management                      |
+| OCR / ML Kit Text Recognition | Text Extraction from Receipts & Bills |
+| Gemini API                    | AI-powered Expense Interpretation     |
+| Shared Preferences            | Local Storage                         |
+| FL Chart                      | Data Visualization                    |
+| PDF & Printing                | Report Generation                     |
 
-* Material Design UI
-* Responsive layouts
-* Dark Mode support
-* Smooth navigation
-
----
-
-# 🛠️ Tech Stack
-
-| Technology              | Purpose                    |
-| ----------------------- | -------------------------- |
-| Flutter                 | Cross-platform Development |
-| Firebase Authentication | User Authentication        |
-| Cloud Firestore         | Cloud Database             |
-| Provider                | State Management           |
-| Shared Preferences      | Local Storage              |
-| FL Chart                | Data Visualization         |
-| PDF & Printing          | Report Generation          |
-
----
 
 # 📂 Project Structure
 
