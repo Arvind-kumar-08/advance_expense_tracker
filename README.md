@@ -13,7 +13,7 @@ A modern Flutter-based Expense Tracker application that helps users track, manag
 
 ---
 
-# 🔥 What's New (v1.1.0)
+# 🔥 What's New (v1.2.0)
 
 This release introduces several improvements focused on usability, analytics, and performance.
 
