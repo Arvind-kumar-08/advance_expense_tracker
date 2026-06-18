@@ -1,123 +1,251 @@
 # 💰 Expense Tracker App
 
-A simple and efficient **Expense Tracker App** built using **Flutter** and **Firebase** to help users manage their daily expenses and track spending habits.
+A modern Flutter-based Expense Tracker application that helps users track, manage, and analyze their daily expenses with an intuitive interface, powerful analytics, offline support, and secure cloud synchronization.
 
 ---
 
-## 🚀 Features
+# 🚀 Live APK
 
-* ➕ Add daily expenses
-* 📊 Track spending history
-* 🗂️ Categorize expenses
-* ✏️ Edit & delete transactions
-* ⚡ Real-time data updates
-* 📱 Clean and responsive UI
+📱 **Download Latest APK**
+
+👉 https://github.com/Arvind-kumar-08/advance_expense_tracker/releases/download/v1.2.0/ExpenseTracker-v1.2.0.apk
+
 
 ---
 
-## 🛠️ Tech Stack
+# 🔥 What's New (v1.1.0)
 
-* **Flutter (Dart)**
-* **Firebase Authentication**
-* **Cloud Firestore**
-* **Material UI**
+This release introduces several improvements focused on usability, analytics, and performance.
+
+### ✨ New Features Added
+
+#### 📊 Advanced Analytics Dashboard
+
+* Interactive expense visualization
+* Category-wise spending analysis
+* Monthly expense breakdown
+* Spending trend monitoring
+
+#### 🌙 Dark Mode Support
+
+* Complete dark theme implementation
+* Improved readability in low-light environments
+* Consistent UI across all screens
+
+#### 📄 PDF Report Generation
+
+* Export expenses as PDF reports
+* Share reports instantly
+* Professionally formatted summaries
+
+#### 💾 Offline Data Persistence
+
+* Continue using the app without internet
+* Local data caching
+* Better reliability during network failures
+
+#### ⚡ Performance Enhancements
+
+* Optimized Provider state management
+* Reduced UI rebuilds
+* Faster navigation and loading times
+
+#### 🎨 UI/UX Improvements
+
+* Cleaner and modern design
+* Better user experience
+* Improved navigation flow
+* Enhanced visual consistency
 
 ---
 
-## 📂 Project Structure
+# 📱 Features
 
-```bash
+## 🔐 Authentication
+
+* Firebase Authentication
+* Secure Login & Registration
+* User-specific data isolation
+
+## 💵 Expense Management
+
+* Add expenses
+* Edit expenses
+* Delete expenses
+* Categorize transactions
+* Track spending history
+
+## 📊 Analytics
+
+* Monthly spending overview
+* Category-wise expense distribution
+* Interactive charts
+* Financial insights dashboard
+
+## 📄 Report Generation
+
+* Generate PDF reports
+* Download reports
+* Share reports with others
+
+## 💾 Offline Support
+
+* Local data storage
+* Seamless offline experience
+* Automatic synchronization support
+
+## 🎨 User Experience
+
+* Material Design UI
+* Responsive layouts
+* Dark Mode support
+* Smooth navigation
+
+---
+
+# 🛠️ Tech Stack
+
+| Technology              | Purpose                    |
+| ----------------------- | -------------------------- |
+| Flutter                 | Cross-platform Development |
+| Firebase Authentication | User Authentication        |
+| Cloud Firestore         | Cloud Database             |
+| Provider                | State Management           |
+| Shared Preferences      | Local Storage              |
+| FL Chart                | Data Visualization         |
+| PDF & Printing          | Report Generation          |
+
+---
+
+# 📂 Project Structure
+
+```text
 lib/
- ┣ 📜 main.dart
- ┣ 📂 screens/
- ┣ 📂 models/
- ┣ 📂 services/
- ┗ 📂 widgets/
+├── core/
+│   ├── constants/
+│   ├── theme/
+│   └── widgets/
+│
+├── models/
+│
+├── providers/
+│
+├── screens/
+│   ├── auth/
+│   ├── dashboard/
+│   ├── analytics/
+│   ├── expenses/
+│   └── profile/
+│
+├── services/
+│
+├── utils/
+│
+└── main.dart
 ```
 
 ---
 
-## ⚙️ Setup Instructions
+# 📸 Screenshots
 
-### 1. Clone the repository
+### Login Screen
+
+<img src="<img width="1080" height="2400" alt="Login" src="https://github.com/user-attachments/assets/2d8e576b-9ee6-4afb-b4d6-98d9c59b3138" />
+" width="250">
+
+### Dashboard
+
+<img src=<img width="1080" height="2400" alt="dashboard" src="https://github.com/user-attachments/assets/8923e98c-e2b6-46f2-9f56-041f803ee3d0" />
+ width="250">
+
+### Splash
+
+<img src=<img width="1080" height="2400" alt="splash" src="https://github.com/user-attachments/assets/dcc16d5b-99a6-4068-90a9-429d0f7ff28e" />
+ width="250">
+
+---
+
+# ⚙️ Installation
+
+### Clone Repository
 
 ```bash
 git clone https://github.com/Arvind-kumar-08/advance_expense_tracker.git
 ```
 
-### 2. Navigate to project folder
+### Navigate to Project
 
 ```bash
-cd expense-tracker
+cd advance_expense_tracker
 ```
 
-### 3. Install dependencies
+### Install Dependencies
 
 ```bash
 flutter pub get
 ```
 
-### 4. Firebase Setup
-
-* Create a Firebase project
-* Add Android app
-* Download `google-services.json`
-* Place it inside:
-
-```bash
-android/app/
-```
-
-### 5. Run the app
+### Run Application
 
 ```bash
 flutter run
 ```
 
----
+### Build Release APK
 
-## 🔐 Security Note
-
-The `google-services.json` file is not included in this repository for security reasons.
-Please add your own Firebase configuration file to run the project.
-
----
-
-## 📸 Screenshots
-![1000157057](https://github.com/user-attachments/assets/63cc03bd-a842-47d4-908c-f1e208a7a8d1)
-![1000157058](https://github.com/user-attachments/assets/92cb7cec-e470-4d81-baea-33fd60d97ab5)
-![1000157059](https://github.com/user-attachments/assets/741482c4-e0ed-4450-bff9-936c8d7f365a)
-![1000157060](https://github.com/user-attachments/assets/93b0152d-aa98-4785-991f-ff86bfa7f82f)
-
-
-
-
-
-
-
-
+```bash
+flutter build apk --release
+```
 
 ---
 
-## 🎯 Key Highlights
+# 📈 Future Enhancements
 
-* Built a **real-time expense tracking system**
-* Integrated **Firebase Firestore for data storage**
-* Implemented **CRUD operations**
-* Designed a **user-friendly UI for better experience**
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Feel free to fork and submit a pull request.
+* 🤖 AI-based Expense Prediction
+* 💰 Budget Planning Module
+* 🔔 Smart Spending Alerts
+* 🌍 Multi-Currency Support
+* ☁️ Cloud Backup & Restore
+* 📊 Advanced Financial Reports
+* 🏦 Bank Account Integration
 
 ---
 
-## 👨‍💻 Author
+# 🎯 Key Highlights
+
+✅ Firebase Authentication
+
+✅ Cloud Firestore Integration
+
+✅ Provider State Management
+
+✅ Offline Data Persistence
+
+✅ Interactive Analytics Dashboard
+
+✅ PDF Report Generation
+
+✅ Dark Mode Support
+
+✅ Production-Ready Architecture
+
+✅ Clean Code Structure
+
+---
+
+# 👨‍💻 Developer
 
 **Arvind Kumar**
 
-* GitHub: https://github.com/Arvind-kumar-08
+B.Tech – Computer Science & Design Engineering (CSD)
+Rajiv Gandhi Institute of Petroleum Technology (RGIPT)
+
+GitHub: https://github.com/Arvind-kumar-08
 
 ---
+
+# ⭐ Support
+
+If you found this project useful, please consider giving it a ⭐ on GitHub.
+
+It helps the project reach more developers and motivates further improvements.
