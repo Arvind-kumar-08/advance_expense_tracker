@@ -10,17 +10,6 @@ A modern Flutter-based Expense Tracker application that helps users track, manag
 
 👉 https://github.com/Arvind-kumar-08/advance_expense_tracker/releases/download/v1.2.0/ExpenseTracker-v1.2.0.apk
 
-
-## New Feature
-
-### 🆕 New AI & OCR Features
-
-* Added OCR-based text extraction from receipts and bills
-* Integrated Gemini API for smart expense data interpretation
-* Reduced manual expense entry using AI-assisted extraction
-* Improved expense creation workflow
-
-
 ## 📱 Features
 
 ### 🔐 Authentication
@@ -56,6 +45,13 @@ A modern Flutter-based Expense Tracker application that helps users track, manag
 * Category-wise expense distribution
 * Interactive charts
 * Financial insights dashboard
+  
+### 🆕 New AI & OCR Features
+
+* Added OCR-based text extraction from receipts and bills
+* Integrated Gemini API for smart expense data interpretation
+* Reduced manual expense entry using AI-assisted extraction
+* Improved expense creation workflow
 
 
 
